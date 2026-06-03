@@ -8,7 +8,6 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-
 :root {
   --bg: #ffffff;
   --bg2: #f8f7f5;
@@ -16,24 +15,17 @@
   --borde: #e8e3db;
   --texto: #2a2a2a;
   --texto2: #6b6b6b;
-  --texto3: #9a9a9a;
   --accent: #5d3a1a;
   --accent-light: #c9a961;
-  --accent-lighter: #d4c4b0;
 }
-
 body {
   background: var(--bg);
   color: var(--texto);
   font-family: 'Outfit', sans-serif;
   min-height: 100vh;
   padding: 32px 24px;
-  line-height: 1.6;
 }
-
 .container { max-width: 1400px; margin: 0 auto; }
-
-/* HEADER */
 .header {
   display: flex;
   justify-content: space-between;
@@ -41,12 +33,9 @@ body {
   padding-bottom: 24px;
   border-bottom: 1px solid var(--borde);
   margin-bottom: 48px;
-  flex-wrap: wrap;
   gap: 20px;
+  flex-wrap: wrap;
 }
-
-.header-left { display: flex; align-items: center; gap: 16px; }
-
 .logo {
   width: 48px;
   height: 48px;
@@ -56,50 +45,17 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
-  flex-shrink: 0;
 }
-
 .header-title h1 {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 1.6rem;
   letter-spacing: 2px;
-  color: var(--texto);
   margin-bottom: 4px;
-  font-weight: 400;
 }
-
-.header-title p {
-  font-size: 0.85rem;
-  color: var(--texto2);
-  letter-spacing: 0.5px;
-  font-weight: 300;
-}
-
-.header-stats {
-  display: flex;
-  gap: 32px;
-}
-
+.header-stats { display: flex; gap: 32px; }
 .stat { text-align: center; }
-
-.stat-value {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.6rem;
-  color: var(--accent);
-  line-height: 1;
-  font-weight: 400;
-}
-
-.stat-label {
-  font-size: 0.7rem;
-  color: var(--texto2);
-  letter-spacing: 0.5px;
-  margin-top: 6px;
-  text-transform: uppercase;
-  font-weight: 500;
-}
-
-/* PROGRESO */
+.stat-value { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--accent); }
+.stat-label { font-size: 0.7rem; color: var(--texto2); margin-top: 6px; }
 .progress-section {
   background: var(--bg);
   border: 1px solid var(--borde);
@@ -107,16 +63,6 @@ body {
   padding: 24px;
   margin-bottom: 48px;
 }
-
-.progress-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.95rem;
-  letter-spacing: 0.5px;
-  color: var(--texto);
-  margin-bottom: 16px;
-  font-weight: 600;
-}
-
 .progress-bar {
   width: 100%;
   height: 6px;
@@ -125,34 +71,17 @@ body {
   overflow: hidden;
   margin-bottom: 12px;
 }
-
 .progress-fill {
   height: 100%;
   background: var(--accent);
   transition: width 0.6s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: #ffffff;
 }
-
-.progress-text {
-  font-size: 0.85rem;
-  color: var(--texto2);
-  display: flex;
-  justify-content: space-between;
-}
-
-/* TIMELINE */
 .timeline {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   gap: 12px;
   margin-bottom: 32px;
 }
-
 .nodo {
   background: var(--bg);
   border: 1px solid var(--borde);
@@ -163,7 +92,6 @@ body {
   transition: all 0.3s ease;
   position: relative;
 }
-
 .nodo::before {
   content: '';
   position: absolute;
@@ -172,376 +100,41 @@ body {
   right: 0;
   height: 2px;
   background: var(--borde);
-  transition: background 0.3s ease;
 }
-
 .nodo.completado::before { background: var(--accent); }
 .nodo.progreso::before { background: var(--accent-light); }
-
 .nodo:hover {
   border-color: var(--accent-light);
   background: var(--bg2);
 }
-
 .nodo-numero {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 1.8rem;
   color: var(--accent);
-  line-height: 1;
   margin-bottom: 8px;
-  font-weight: 400;
 }
-
 .nodo-titulo {
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--texto);
   margin-bottom: 8px;
-  line-height: 1.3;
 }
-
-.nodo-status {
-  font-size: 0.6rem;
-  color: var(--texto2);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 4px 8px;
-  background: var(--bg2);
-  border-radius: 3px;
-  display: inline-block;
-  font-weight: 500;
-}
-
-/* FASE EXPANDIDA */
-.fase-expandida {
-  background: var(--bg);
-  border: 1px solid var(--borde);
-  border-radius: 8px;
-  padding: 32px;
-  margin-bottom: 48px;
-  animation: slideIn 0.4s ease;
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fase-header {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin-bottom: 32px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--borde);
-}
-
-.fase-numero {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.8rem;
-  color: var(--accent);
-  line-height: 1;
-  min-width: 60px;
-  font-weight: 400;
-}
-
-.fase-info h2 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.6rem;
-  letter-spacing: 1px;
-  color: var(--texto);
-  margin-bottom: 8px;
-  font-weight: 400;
-}
-
-.fase-info p {
-  font-size: 0.95rem;
-  color: var(--texto2);
-  line-height: 1.6;
-  margin: 0;
-}
-
-.fase-progress {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 20px;
-  margin-bottom: 32px;
-  align-items: center;
-}
-
-.progress-bar-fase {
-  width: 100%;
-  height: 6px;
-  background: var(--borde);
-  border-radius: 3px;
-  overflow: hidden;
-}
-
-.progress-fill-fase {
-  height: 100%;
-  background: var(--accent);
-  transition: width 0.6s ease;
-}
-
-.progress-percent {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.1rem;
-  color: var(--accent);
-  min-width: 50px;
-  text-align: right;
-  font-weight: 600;
-}
-
-/* TABS */
-.tabs {
-  display: flex;
-  gap: 24px;
-  margin-bottom: 24px;
-  border-bottom: 1px solid var(--borde);
-  padding-bottom: 12px;
-  overflow-x: auto;
-}
-
-.tab {
-  padding: 10px 0;
-  background: transparent;
-  border: none;
-  color: var(--texto2);
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-family: 'Outfit', sans-serif;
-  border-bottom: 2px solid transparent;
-  transition: all 0.3s ease;
-}
-
-.tab:hover { color: var(--accent); }
-.tab.activo { color: var(--accent); border-bottom-color: var(--accent); }
-
-.tab-content { display: none; }
-.tab-content.activo { display: block; animation: fadeIn 0.3s ease; }
-
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-/* TAREAS */
-.tareas-grid {
-  display: grid;
-  gap: 12px;
-}
-
-.tarea {
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-  padding: 14px;
-  background: var(--bg2);
-  border: 1px solid var(--borde);
-  border-radius: 6px;
-  transition: all 0.3s ease;
-}
-
-.tarea:hover {
-  background: var(--bg3);
-  border-color: var(--accent-light);
-}
-
-.tarea input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  min-width: 18px;
-  margin-top: 2px;
-  cursor: pointer;
-  accent-color: var(--accent);
-}
-
-.tarea-texto {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.tarea-titulo {
-  font-weight: 600;
-  color: var(--texto);
-  font-size: 0.95rem;
-  margin: 0;
-}
-
-.tarea.completada .tarea-titulo {
-  text-decoration: line-through;
-  color: var(--texto2);
-}
-
-.tarea-desc {
-  font-size: 0.8rem;
-  color: var(--texto2);
-  margin: 0;
-}
-
-.tarea-inputs {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  width: 100%;
-}
-
-.tarea-input {
-  border: 1px solid var(--borde);
-  background: var(--bg);
-  padding: 8px;
-  border-radius: 4px;
-  font-size: 0.9rem;
-  font-family: 'Outfit', sans-serif;
-  color: var(--texto);
-}
-
-.tarea-input::placeholder {
-  color: var(--texto3);
-}
-
-.btn-eliminar {
-  background: #f0ebe5;
-  border: 1px solid var(--borde);
-  padding: 4px 8px;
-  border-radius: 3px;
-  cursor: pointer;
-  font-size: 0.7rem;
-  color: #d64545;
-  margin-top: 4px;
-}
-
-/* DOCUMENTOS */
-.docs-container {
-  display: grid;
-  gap: 16px;
-}
-
-.upload-section {
-  border: 2px dashed var(--borde);
-  border-radius: 8px;
-  padding: 24px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.upload-section:hover {
-  border-color: var(--accent-light);
-  background: var(--bg2);
-}
-
-.upload-section input[type="file"] {
-  display: none;
-}
-
-.docs-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 12px;
-  margin-top: 16px;
-}
-
-.documento {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 12px;
-  background: var(--bg2);
-  border: 1px solid var(--borde);
-  border-radius: 6px;
-  transition: all 0.3s ease;
-}
-
-.documento:hover {
-  background: var(--bg3);
-  border-color: var(--accent-light);
-}
-
-.documento-icon { font-size: 1.4rem; }
-.documento-nombre { font-weight: 600; color: var(--texto); font-size: 0.8rem; }
-.documento-tipo { font-size: 0.65rem; color: var(--texto2); text-transform: uppercase; }
-
-.documento-link {
-  display: inline-block;
-  padding: 6px 10px;
-  background: var(--accent);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.7rem;
-  text-decoration: none;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-.documento-link:hover {
-  background: var(--accent-light);
-}
-
-.btn-grupo {
-  display: flex;
-  gap: 12px;
-  margin-top: 32px;
-  flex-wrap: wrap;
-}
-
-.btn {
-  padding: 12px 24px;
-  border: none;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: 'Outfit', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.btn-primario {
-  background: var(--accent);
-  color: white;
-}
-
-.btn-primario:hover {
-  background: var(--accent-light);
-}
-
-.btn-agregar {
-  background: var(--bg2);
-  color: var(--accent);
-  border: 1px solid var(--borde);
-  padding: 10px 16px;
-  font-size: 0.85rem;
-  margin-top: 12px;
-}
-
-.btn-agregar:hover {
-  background: var(--bg3);
-}
-
 .loading {
   text-align: center;
   padding: 40px;
   color: var(--texto2);
 }
-
+.error {
+  background: #fee;
+  border: 1px solid #fcc;
+  color: #c33;
+  padding: 16px;
+  border-radius: 6px;
+  margin: 20px 0;
+}
 @media (max-width: 768px) {
   body { padding: 16px; }
-  .header { flex-direction: column; align-items: flex-start; }
+  .header { flex-direction: column; }
   .header-stats { width: 100%; justify-content: space-around; }
-  .fase-expandida { padding: 20px; }
-  .docs-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
 }
 </style>
 </head>
@@ -549,11 +142,11 @@ body {
 
 <div class="container">
   <div class="header">
-    <div class="header-left">
+    <div style="display: flex; align-items: center; gap: 16px;">
       <div class="logo">🥩</div>
       <div class="header-title">
         <h1>Bitácora Ejecutiva</h1>
-        <p>Hermanos Pérez — Roadmap Digital</p>
+        <p style="color: var(--texto2); margin: 0; font-size: 0.85rem;">Hermanos Pérez — Roadmap Digital</p>
       </div>
     </div>
     <div class="header-stats">
@@ -573,324 +166,113 @@ body {
   </div>
 
   <div class="progress-section">
-    <div class="progress-title">Progreso General del Proyecto</div>
+    <div style="font-weight: 600; margin-bottom: 16px;">Progreso General</div>
     <div class="progress-bar">
-      <div class="progress-fill" id="progressFill" style="width: 0%">
-        <span id="progressText">0%</span>
-      </div>
+      <div class="progress-fill" id="progressFill" style="width: 0%"></div>
     </div>
-    <div class="progress-text">
+    <div style="font-size: 0.85rem; color: var(--texto2); display: flex; justify-content: space-between;">
       <span>Completado: <strong id="tasksCompletadas">0</strong> tareas</span>
       <span>Total: <strong id="tasksTotal">0</strong> tareas</span>
     </div>
   </div>
 
   <div id="timelineContainer">
-    <div class="loading">Cargando...</div>
+    <div class="loading">⏳ Cargando Bitácora...</div>
   </div>
 
   <div id="faseContainer"></div>
 </div>
 
 <script>
-const SUPABASE_URL = 'https://kkhtnbfgmpebgqpfxqag.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtraHRuYmZnbXBlYmdxcGZ4cWFnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc5MTMwNDcsImV4cCI6MjA4MzQ4OTA0N30.gKvZA_iodJSMs77s8GHWv169Re4vF61NGtjB_nAsFOI';
+(function() {
+  const SUPABASE_URL = 'https://kkhtnbfgmpebgqpfxqag.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtraHRuYmZnbXBlYmdxcGZ4cWFnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc5MTMwNDcsImV4cCI6MjA4MzQ4OTA0N30.gKvZA_iodJSMs77s8GHWv169Re4vF61NGtjB_nAsFOI';
 
-const { createClient } = window.supabase;
-const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+  let sbClient;
+  let fases = [];
+  let tareas = [];
 
-let fases = [];
-let tareas = [];
-let documentos = [];
-let faseSeleccionada = null;
+  console.log('🚀 Iniciando...');
 
-async function cargarDatos() {
   try {
-    const [fasesRes, tareasRes, docsRes] = await Promise.all([
-      supabase.from('fases').select('*').order('numero'),
-      supabase.from('tareas').select('*'),
-      supabase.from('documentos').select('*')
-    ]);
-
-    fases = fasesRes.data || [];
-    tareas = tareasRes.data || [];
-    documentos = docsRes.data || [];
-
-    renderTimeline();
-    actualizarStats();
+    sbClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    console.log('✅ Supabase OK');
+    cargarDatos();
   } catch (error) {
-    console.error('Error cargando datos:', error);
-    document.getElementById('timelineContainer').innerHTML = '<div class="loading">Error cargando datos</div>';
+    console.error('❌', error.message);
+    document.getElementById('timelineContainer').innerHTML = '<div class="error">' + error.message + '</div>';
   }
-}
 
-function renderTimeline() {
-  if (faseSeleccionada) return;
-  
-  const html = `
-    <div class="timeline">
-      ${fases.map(fase => `
-        <div class="nodo ${fase.estado}" onclick="abrirFase(${fase.id})">
-          <div class="nodo-numero">${fase.numero}</div>
-          <div class="nodo-titulo">${fase.titulo}</div>
-          <div class="nodo-status">${getStatusLabel(fase.estado)}</div>
-        </div>
-      `).join('')}
-    </div>
-  `;
-  document.getElementById('timelineContainer').innerHTML = html;
-}
-
-function getStatusLabel(estado) {
-  const labels = { completado: '✓', progreso: '◐', pendiente: '○' };
-  return labels[estado] || estado;
-}
-
-async function abrirFase(faseId) {
-  faseSeleccionada = faseId;
-  const fase = fases.find(f => f.id === faseId);
-  const tareasDelFase = tareas.filter(t => t.fase_id === faseId);
-  const docsDelFase = documentos.filter(d => d.fase_id === faseId);
-
-  const html = `
-    <div class="fase-expandida">
-      <div class="fase-header">
-        <div class="fase-numero">${fase.numero}</div>
-        <div class="fase-info">
-          <h2 contenteditable="true" onblur="actualizarFase(${fase.id}, 'titulo', this.textContent)">${fase.titulo}</h2>
-          <p contenteditable="true" onblur="actualizarFase(${fase.id}, 'descripcion', this.textContent)">${fase.descripcion || ''}</p>
-        </div>
-      </div>
-
-      <div class="fase-progress">
-        <div class="progress-bar-fase">
-          <div class="progress-fill-fase" style="width: ${fase.progreso}%"></div>
-        </div>
-        <div class="progress-percent">${fase.progreso}%</div>
-      </div>
-
-      <div class="tabs">
-        <button class="tab activo" onclick="switchTab(event, 'tareas-${faseId}')">Tareas</button>
-        <button class="tab" onclick="switchTab(event, 'docs-${faseId}')">Documentos</button>
-      </div>
-
-      <div id="tareas-${faseId}" class="tab-content activo">
-        <div class="tareas-grid">
-          ${tareasDelFase.map(tarea => `
-            <div class="tarea ${tarea.completada ? 'completada' : ''}">
-              <input type="checkbox" ${tarea.completada ? 'checked' : ''} onchange="toggleTarea(${tarea.id}, this.checked)">
-              <div class="tarea-texto">
-                <div class="tarea-inputs">
-                  <input type="text" class="tarea-input" value="${tarea.titulo}" placeholder="Título" onblur="actualizarTarea(${tarea.id}, 'titulo', this.value)">
-                  <input type="text" class="tarea-input" value="${tarea.descripcion || ''}" placeholder="Descripción" onblur="actualizarTarea(${tarea.id}, 'descripcion', this.value)">
-                  <button class="btn-eliminar" onclick="eliminarTarea(${tarea.id})">Eliminar</button>
-                </div>
-              </div>
-            </div>
-          `).join('')}
-        </div>
-        <button class="btn btn-agregar" onclick="agregarTarea(${faseId})">+ Agregar tarea</button>
-      </div>
-
-      <div id="docs-${faseId}" class="tab-content">
-        <div class="docs-container">
-          <div class="upload-section" onclick="document.getElementById('fileInput-${faseId}').click()">
-            <p style="margin: 0; color: var(--texto2); font-size: 0.9rem;">📤 Click para subir archivo o arrastra aquí</p>
-            <input type="file" id="fileInput-${faseId}" onchange="subirArchivo(${faseId}, this.files[0])">
-          </div>
-          <div class="docs-grid">
-            ${docsDelFase.map(doc => `
-              <div class="documento">
-                <div class="documento-icon">📄</div>
-                <div class="documento-nombre">${doc.nombre}</div>
-                <a href="${doc.url_archivo}" target="_blank" class="documento-link">Descargar</a>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-      </div>
-
-      <div class="btn-grupo">
-        <button class="btn btn-primario" onclick="cerrarFase()">← Volver al Timeline</button>
-      </div>
-    </div>
-  `;
-
-  document.getElementById('timelineContainer').innerHTML = '';
-  document.getElementById('faseContainer').innerHTML = html;
-}
-
-function switchTab(event, tabId) {
-  const tabs = event.currentTarget.parentElement.querySelectorAll('.tab');
-  const contents = event.currentTarget.parentElement.parentElement.querySelectorAll('.tab-content');
-  
-  tabs.forEach(t => t.classList.remove('activo'));
-  contents.forEach(c => c.classList.remove('activo'));
-  
-  event.currentTarget.classList.add('activo');
-  document.getElementById(tabId).classList.add('activo');
-}
-
-async function toggleTarea(tareaId, completada) {
-  try {
-    const tarea = tareas.find(t => t.id === tareaId);
-    const nuevoEstado = completada ? 'completado' : 'pendiente';
-    
-    await supabase
-      .from('tareas')
-      .update({ completada, status: nuevoEstado })
-      .eq('id', tareaId);
-
-    tarea.completada = completada;
-    tarea.status = nuevoEstado;
-
-    // Recalcular progreso
-    const faseId = tarea.fase_id;
-    const tareasDeFase = tareas.filter(t => t.fase_id === faseId);
-    const tareasCompletadas = tareasDeFase.filter(t => t.completada).length;
-    const progreso = Math.round((tareasCompletadas / tareasDeFase.length) * 100);
-
-    let nuevoEstadoFase = 'pendiente';
-    if (progreso === 100) nuevoEstadoFase = 'completado';
-    else if (progreso > 0) nuevoEstadoFase = 'progreso';
-
-    await actualizarFase(faseId, 'progreso', progreso);
-    await actualizarFase(faseId, 'estado', nuevoEstadoFase);
-
-    abrirFase(faseId);
-    actualizarStats();
-  } catch (error) {
-    console.error('Error toggeando tarea:', error);
-  }
-}
-
-async function actualizarTarea(tareaId, campo, valor) {
-  try {
-    await supabase
-      .from('tareas')
-      .update({ [campo]: valor })
-      .eq('id', tareaId);
-
-    const tarea = tareas.find(t => t.id === tareaId);
-    if (tarea) tarea[campo] = valor;
-  } catch (error) {
-    console.error('Error actualizando tarea:', error);
-  }
-}
-
-async function agregarTarea(faseId) {
-  try {
-    const { data } = await supabase
-      .from('tareas')
-      .insert([{ 
-        fase_id: faseId, 
-        titulo: 'Nueva tarea', 
-        descripcion: '',
-        status: 'pendiente',
-        completada: false
-      }])
-      .select();
-
-    if (data) {
-      tareas.push(data[0]);
-      abrirFase(faseId);
-    }
-  } catch (error) {
-    console.error('Error agregando tarea:', error);
-  }
-}
-
-async function eliminarTarea(tareaId) {
-  if (confirm('¿Eliminar esta tarea?')) {
-    try {
-      await supabase.from('tareas').delete().eq('id', tareaId);
-      tareas = tareas.filter(t => t.id !== tareaId);
-      const faseId = faseSeleccionada;
-      abrirFase(faseId);
+  function cargarDatos() {
+    Promise.all([
+      sbClient.from('fases').select('*').order('numero'),
+      sbClient.from('tareas').select('*')
+    ])
+    .then(([fasesRes, tareasRes]) => {
+      if (fasesRes.error) throw new Error(fasesRes.error.message);
+      if (tareasRes.error) throw new Error(tareasRes.error.message);
+      
+      fases = fasesRes.data || [];
+      tareas = tareasRes.data || [];
+      
+      console.log('✅', fases.length, 'fases');
+      renderTimeline();
       actualizarStats();
-    } catch (error) {
-      console.error('Error eliminando tarea:', error);
-    }
+    })
+    .catch(error => {
+      console.error('❌', error);
+      document.getElementById('timelineContainer').innerHTML = '<div class="error">' + error.message + '</div>';
+    });
   }
-}
 
-async function actualizarFase(faseId, campo, valor) {
-  try {
-    await supabase
-      .from('fases')
-      .update({ [campo]: valor })
-      .eq('id', faseId);
+  function renderTimeline() {
+    let html = '<div class="timeline">';
+    fases.forEach(fase => {
+      html += '<div class="nodo ' + fase.estado + '" onclick="window.app.abrirFase(' + fase.id + ')"><div class="nodo-numero">' + fase.numero + '</div><div class="nodo-titulo">' + fase.titulo + '</div></div>';
+    });
+    html += '</div>';
+    document.getElementById('timelineContainer').innerHTML = html;
+  }
 
+  function abrirFase(faseId) {
     const fase = fases.find(f => f.id === faseId);
-    if (fase) fase[campo] = valor;
-  } catch (error) {
-    console.error('Error actualizando fase:', error);
+    const tareasDelFase = tareas.filter(t => t.fase_id === faseId);
+    
+    let html = '<div style="background: var(--bg); border: 1px solid var(--borde); border-radius: 8px; padding: 32px;"><div style="font-family: Bebas Neue; font-size: 2.8rem; color: var(--accent); margin-bottom: 16px;">' + fase.numero + '</div><h2 style="font-family: Bebas Neue; font-size: 1.6rem; margin-bottom: 8px;">' + fase.titulo + '</h2><p style="color: var(--texto2);">' + (fase.descripcion || '') + '</p><div style="margin: 24px 0;"><div class="progress-bar"><div class="progress-fill" style="width: ' + fase.progreso + '%"></div></div></div><h3 style="font-weight: 600; margin-bottom: 16px;">Tareas (' + tareasDelFase.length + ')</h3>';
+    
+    tareasDelFase.forEach(t => {
+      html += '<div style="padding: 12px; background: var(--bg2); border: 1px solid var(--borde); border-radius: 6px; margin-bottom: 8px;"><strong>' + t.titulo + '</strong><br><small style="color: var(--texto2);">' + (t.descripcion || '') + '</small></div>';
+    });
+    
+    html += '<button onclick="window.app.cerrar()" style="padding: 12px 24px; background: var(--accent); color: white; border: none; border-radius: 6px; cursor: pointer; margin-top: 24px;">← Volver</button></div>';
+    
+    document.getElementById('timelineContainer').innerHTML = '';
+    document.getElementById('faseContainer').innerHTML = html;
   }
-}
 
-async function subirArchivo(faseId, archivo) {
-  if (!archivo) return;
-
-  try {
-    const nombreArchivo = `${Date.now()}_${archivo.name}`;
-    const { data, error } = await supabase.storage
-      .from('documentos')
-      .upload(`fase-${faseId}/${nombreArchivo}`, archivo);
-
-    if (error) throw error;
-
-    const { data: urlData } = supabase.storage
-      .from('documentos')
-      .getPublicUrl(data.path);
-
-    const { data: docData } = await supabase
-      .from('documentos')
-      .insert([{
-        fase_id: faseId,
-        nombre: archivo.name,
-        tipo: archivo.type,
-        url_archivo: urlData.publicUrl,
-        archivo_size: archivo.size
-      }])
-      .select();
-
-    if (docData) {
-      documentos.push(docData[0]);
-      abrirFase(faseId);
-    }
-  } catch (error) {
-    console.error('Error subiendo archivo:', error);
-    alert('Error subiendo archivo');
+  function cerrarFase() {
+    document.getElementById('faseContainer').innerHTML = '';
+    renderTimeline();
   }
-}
 
-function cerrarFase() {
-  faseSeleccionada = null;
-  document.getElementById('faseContainer').innerHTML = '';
-  renderTimeline();
-}
+  function actualizarStats() {
+    const completadas = fases.filter(f => f.estado === 'completado').length;
+    const progreso = fases.filter(f => f.estado === 'progreso').length;
+    const pendientes = fases.filter(f => f.estado === 'pendiente').length;
+    const tareasCompletadas = tareas.filter(t => t.completada).length;
+    const total = tareas.length;
+    const pct = total > 0 ? Math.round((tareasCompletadas / total) * 100) : 0;
+    
+    document.getElementById('statCompletado').textContent = completadas;
+    document.getElementById('statProgreso').textContent = progreso;
+    document.getElementById('statPendiente').textContent = pendientes;
+    document.getElementById('tasksCompletadas').textContent = tareasCompletadas;
+    document.getElementById('tasksTotal').textContent = total;
+    document.getElementById('progressFill').style.width = pct + '%';
+  }
 
-function actualizarStats() {
-  const completadas = fases.filter(f => f.estado === 'completado').length;
-  const progreso = fases.filter(f => f.estado === 'progreso').length;
-  const pendientes = fases.filter(f => f.estado === 'pendiente').length;
-  const tareasCompletadas = tareas.filter(t => t.completada).length;
-  const totalTareas = tareas.length;
-  const porcentajeGeneral = totalTareas > 0 ? Math.round((tareasCompletadas / totalTareas) * 100) : 0;
-
-  document.getElementById('statCompletado').textContent = completadas;
-  document.getElementById('statProgreso').textContent = progreso;
-  document.getElementById('statPendiente').textContent = pendientes;
-  document.getElementById('tasksCompletadas').textContent = tareasCompletadas;
-  document.getElementById('tasksTotal').textContent = totalTareas;
-  
-  const progressFill = document.getElementById('progressFill');
-  progressFill.style.width = porcentajeGeneral + '%';
-  document.getElementById('progressText').textContent = porcentajeGeneral + '%';
-}
-
-// Inicializar
-cargarDatos();
+  window.app = { abrirFase, cerrarFase };
+})();
 </script>
 
 </body>
